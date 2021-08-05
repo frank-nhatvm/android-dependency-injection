@@ -2,8 +2,9 @@ package com.fatherofapps.androiddependencyinjection.datas.repositories
 
 import com.fatherofapps.androiddependencyinjection.datas.services.ProductLocalService
 import com.fatherofapps.androiddependencyinjection.datas.services.ProductRemoteService
+import javax.inject.Inject
 
-class ProductRepository constructor(private val productLocalService: ProductLocalService, private val productRemoteService: ProductRemoteService) {
+class ProductRepository @Inject constructor(private val productLocalService: ProductLocalService, private val productRemoteService: ProductRemoteService) {
 
     fun getProductDetail(): String{
         val cacheData = productLocalService.getProductDetail()

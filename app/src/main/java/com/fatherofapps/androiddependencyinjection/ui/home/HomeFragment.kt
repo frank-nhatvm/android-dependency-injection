@@ -1,5 +1,6 @@
 package com.fatherofapps.androiddependencyinjection.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,24 +14,26 @@ import com.fatherofapps.androiddependencyinjection.MyApplication
 import com.fatherofapps.androiddependencyinjection.R
 import com.fatherofapps.androiddependencyinjection.ui.cart.CartFragment
 import com.fatherofapps.androiddependencyinjection.ui.product.ProductFragment
+import javax.inject.Inject
 
 class HomeFragment: Fragment() {
 
+    @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var homeViewModel: HomeViewModel
 
     private var data: String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initViewModel()
-        data = homeViewModel.getHomeData()
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as MyApplication).appComponent.inject(this)
+        homeViewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
     }
 
-    private fun initViewModel(){
-        viewModelFactory = (requireActivity().application as MyApplication).appContainer.viewModelFactory
-        homeViewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        data = homeViewModel.getHomeData()
     }
 
 

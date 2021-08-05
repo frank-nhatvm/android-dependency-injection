@@ -1,6 +1,8 @@
 package com.fatherofapps.androiddependencyinjection.datas.services
 
-class HomeLocalService {
+import javax.inject.Inject
+
+class HomeLocalService @Inject constructor() {
 
     private var data: String = ""
 

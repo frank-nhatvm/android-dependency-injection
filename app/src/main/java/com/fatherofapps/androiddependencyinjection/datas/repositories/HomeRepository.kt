@@ -2,8 +2,9 @@ package com.fatherofapps.androiddependencyinjection.datas.repositories
 
 import com.fatherofapps.androiddependencyinjection.datas.services.HomeLocalService
 import com.fatherofapps.androiddependencyinjection.datas.services.HomeRemoteService
+import javax.inject.Inject
 
-class HomeRepository constructor(private val homeRemoteService: HomeRemoteService, private val homeLocalService: HomeLocalService) {
+class HomeRepository @Inject constructor(private val homeRemoteService: HomeRemoteService, private val homeLocalService: HomeLocalService) {
 
     fun getHomeData(): String {
 

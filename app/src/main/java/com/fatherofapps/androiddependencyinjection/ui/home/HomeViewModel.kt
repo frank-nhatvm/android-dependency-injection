@@ -3,8 +3,9 @@ package com.fatherofapps.androiddependencyinjection.ui.home
 import androidx.lifecycle.ViewModel
 import com.fatherofapps.androiddependencyinjection.datas.repositories.HomeRepository
 import com.fatherofapps.androiddependencyinjection.datas.repositories.ProductRepository
+import javax.inject.Inject
 
-class HomeViewModel constructor(private val homeRepository: HomeRepository,private val productRepository: ProductRepository): ViewModel() {
+class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository, private val productRepository: ProductRepository): ViewModel() {
 
     private var data: String = ""
 
