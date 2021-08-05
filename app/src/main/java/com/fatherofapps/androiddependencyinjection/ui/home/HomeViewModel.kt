@@ -6,9 +6,13 @@ import com.fatherofapps.androiddependencyinjection.datas.repositories.ProductRep
 
 class HomeViewModel constructor(private val homeRepository: HomeRepository,private val productRepository: ProductRepository): ViewModel() {
 
+    private var data: String = ""
+
     fun getHomeData():String{
-        val data =  homeRepository.getHomeData()
-        productRepository.getProductList()
+        if(data.isEmpty()) {
+            data = homeRepository.getHomeData()
+            productRepository.getProductList()
+        }
         return data
     }
 
