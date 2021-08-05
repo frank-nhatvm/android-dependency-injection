@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.fatherofapps.androiddependencyinjection.MyApplication
 import com.fatherofapps.androiddependencyinjection.R
 
 class ProductFragment : Fragment() {
+
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     lateinit var productViewModel: ProductViewModel
 
@@ -19,8 +22,8 @@ class ProductFragment : Fragment() {
     }
 
     private fun  initViewModel(){
-        val productRepository = (requireActivity().application as MyApplication).appContainer.productRepository
-        productViewModel = ProductViewModel(productRepository)
+       viewModelFactory =  (requireActivity().application as MyApplication).appContainer.viewModelFactory
+        productViewModel = ViewModelProvider(this,viewModelFactory).get(ProductViewModel::class.java)
     }
 
     override fun onCreateView(
