@@ -6,9 +6,12 @@ import com.fatherofapps.androiddependencyinjection.datas.apis.ProductAPI
 import com.fatherofapps.androiddependencyinjection.datas.apis.ProductAPIImp
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 @Module
-class NetworkModule {
+@InstallIn(SingletonComponent::class)
+object NetworkModule {
 
     @Provides
     fun provideHomeAPI(): HomeAPI{

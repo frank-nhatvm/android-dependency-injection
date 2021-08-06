@@ -8,29 +8,23 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.fatherofapps.androiddependencyinjection.MainActivity
 import com.fatherofapps.androiddependencyinjection.MyApplication
 import com.fatherofapps.androiddependencyinjection.R
-import com.fatherofapps.androiddependencyinjection.di.ViewModelFactory
 import com.fatherofapps.androiddependencyinjection.ui.cart.CartFragment
 import com.fatherofapps.androiddependencyinjection.ui.product.ProductFragment
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment: Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private lateinit var homeViewModel: HomeViewModel
+    private  val homeViewModel: HomeViewModel by viewModels()
 
     private var data: String = ""
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        (requireActivity().application as MyApplication).appComponent.inject(this)
-        homeViewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
