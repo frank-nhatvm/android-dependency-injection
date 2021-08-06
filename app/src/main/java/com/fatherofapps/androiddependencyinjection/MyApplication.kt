@@ -7,4 +7,10 @@ class MyApplication : Application() {
 
     val appContainer = AppContainer()
 
+    override fun onCreate() {
+        super.onCreate()
+        appContainer.create()
+    }
+
 }
+

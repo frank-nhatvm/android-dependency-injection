@@ -11,13 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.fatherofapps.androiddependencyinjection.MainActivity
 import com.fatherofapps.androiddependencyinjection.MyApplication
 import com.fatherofapps.androiddependencyinjection.R
-import com.fatherofapps.androiddependencyinjection.di.HomeViewModelFactory
+import com.fatherofapps.androiddependencyinjection.di.ViewModelFactory
 import com.fatherofapps.androiddependencyinjection.ui.cart.CartFragment
 import com.fatherofapps.androiddependencyinjection.ui.product.ProductFragment
 
 class HomeFragment: Fragment() {
 
-    lateinit var homeViewModelFactory: HomeViewModelFactory
+    lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -30,8 +30,8 @@ class HomeFragment: Fragment() {
     }
 
     private fun initViewModel(){
-        homeViewModelFactory = (requireActivity().application as MyApplication).appContainer.homeViewModelFactory
-        homeViewModel = ViewModelProvider(this,homeViewModelFactory).get(HomeViewModel::class.java)
+        viewModelFactory = (requireActivity().application as MyApplication).appContainer.viewModelFactory
+        homeViewModel = ViewModelProvider(this,viewModelFactory).get(HomeViewModel::class.java)
     }
 
 
