@@ -1,8 +1,9 @@
 package com.fatherofapps.androiddependencyinjection.datas.services
 
 import com.fatherofapps.androiddependencyinjection.datas.apis.ProductAPI
+import javax.inject.Inject
 
-class ProductRemoteService constructor(private val productAPI: ProductAPI) {
+class ProductRemoteService @Inject constructor(private val productAPI: ProductAPI) {
 
     fun getProductDetail(): String{
         return productAPI.getProductDetail()

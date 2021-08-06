@@ -11,6 +11,11 @@ import com.fatherofapps.androiddependencyinjection.datas.services.ProductLocalSe
 import com.fatherofapps.androiddependencyinjection.datas.services.ProductRemoteService
 import com.fatherofapps.androiddependencyinjection.ui.home.HomeViewModel
 import com.fatherofapps.androiddependencyinjection.ui.product.ProductViewModel
+import dagger.Binds
+import dagger.Component
+import dagger.Module
+import dagger.Provides
+import javax.inject.Inject
 
 
 class AppContainer {
@@ -35,10 +40,11 @@ class AppContainer {
         val productViewModelProvider =  ProductViewModelProvider(productRepository)
         viewModelsMap.put(ProductViewModel::class.java,productViewModelProvider)
 
-        viewModelFactory  = ViewModelFactory(viewModelsMap)
+      //  viewModelFactory  = ViewModelFactory(viewModelsMap)
 
 
     }
+
 
 
 }

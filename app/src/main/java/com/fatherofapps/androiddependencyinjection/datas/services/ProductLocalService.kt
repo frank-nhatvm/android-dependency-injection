@@ -1,6 +1,8 @@
 package com.fatherofapps.androiddependencyinjection.datas.services
 
-class ProductLocalService {
+import javax.inject.Inject
+
+class ProductLocalService @Inject constructor() {
     fun getProductDetail(): String{
         return "fake product detail data"
     }

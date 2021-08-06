@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
         if (null == savedInstanceState) {
             openFragment(HomeFragment())
         }
-
     }
 
     fun openFragment(fragment: Fragment) {
@@ -22,7 +21,5 @@ class MainActivity : AppCompatActivity() {
         transaction.addToBackStack(name)
         transaction.commit()
     }
-
-
 
 }

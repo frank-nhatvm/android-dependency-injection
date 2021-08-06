@@ -7,6 +7,7 @@ import com.fatherofapps.androiddependencyinjection.datas.repositories.ProductRep
 import com.fatherofapps.androiddependencyinjection.ui.home.HomeViewModel
 import com.fatherofapps.androiddependencyinjection.ui.product.ProductViewModel
 import java.lang.Exception
+import javax.inject.Inject
 
 interface Provider<T> {
     fun get(): T
@@ -28,7 +29,7 @@ class ProductViewModelProvider constructor(private val productRepository: Produc
 }
 
 
-class ViewModelFactory constructor(private val viewModelsMap: Map<Class<out ViewModel>, Provider<ViewModel>>) :
+class ViewModelFactory @Inject constructor(private val viewModelsMap: Map<Class<out ViewModel>, @JvmSuppressWildcards javax.inject.Provider<ViewModel>>) :
     ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
